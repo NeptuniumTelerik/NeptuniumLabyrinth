@@ -7,6 +7,7 @@ namespace Labyrinth
 {
     public class Top5Scoreboard
     {
+        //maraba
         List<Tuple<uint, String>> scoreboard;
 
         public Top5Scoreboard()
