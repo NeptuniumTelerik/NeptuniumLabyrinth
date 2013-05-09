@@ -7,24 +7,15 @@ namespace Labyrinth
 {
     public class LabyrinthProcesor
     {
-        #region Fields
-
         private LabyrinthMatrix matrix;
         private uint moveCount;
         private Top5Scoreboard scoreboard;
-
-        #endregion
-
-        #region Properties
 
         public LabyrinthMatrix Matrix
         {
             get { return matrix; }
             set { matrix = value; }
         }
-
-        #endregion
-
         public LabyrinthProcesor()
         {
             scoreboard = new Top5Scoreboard();

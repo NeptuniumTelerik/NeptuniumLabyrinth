@@ -19,10 +19,7 @@ namespace Labyrinth
                 {
                     if (i == labyrinth.MyPostionVertical && j == labyrinth.MyPostionHorizontal)
                     {
-
-
-
-                        Console.Write("*");
+                     Console.Write("*");
                     }
                     else
                     {
@@ -42,9 +39,6 @@ namespace Labyrinth
                 ShowLabyrinth(processor.Matrix);
                 processor.ShowInputMessage();
                 String input;
-
-
-
                 input = Console.ReadLine();
                 processor.HandleInput(input);
             }
