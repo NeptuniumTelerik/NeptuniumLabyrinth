@@ -6,12 +6,8 @@ using System.Text;
 namespace Labyrinth
 {
     public class Top5Scoreboard
-    {
-        #region Fields
-
+    
         List<Tuple<uint, String>> scoreboard;
-
-        #endregion
 
         public Top5Scoreboard()
         {
