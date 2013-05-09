@@ -5,9 +5,6 @@ using System.Text;
 
 namespace Labyrinth
 {
-    /// <summary>
-    /// dsadsadsa
-    /// </summary>
     public class Top5Scoreboard
     {
         List<Tuple<uint, String>> scoreboard;
