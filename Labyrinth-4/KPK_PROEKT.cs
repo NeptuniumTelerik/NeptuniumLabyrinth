@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Labyrinth
 {
-	// Nothing is more admirable than the fortitude with which millionaires tolerate the disadvantages of their wealth.
+	
 
     class KPK_PROEKT
     {
