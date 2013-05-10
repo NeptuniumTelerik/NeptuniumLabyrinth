@@ -19,7 +19,7 @@ namespace Labyrinth
         {
             if (scoreboard.Count() >= 5 && moveCount > scoreboard.Last().Item1)
             {
-                Console.WriteLine("Your not good enough for the scoreboard :)");
+                Console.WriteLine("You are not good enough for the scoreboard :)");
                 return;
             }
 
