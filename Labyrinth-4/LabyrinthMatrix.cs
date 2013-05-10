@@ -33,11 +33,8 @@ namespace Labyrinth
 
             matrix[3][3] = '-';
         }
-        public LabyrinthMatrix(LabyrinthMatrix l)
-        {
 
-        }
-
+     
         private char GetRandomSymbol() 
         {
            
