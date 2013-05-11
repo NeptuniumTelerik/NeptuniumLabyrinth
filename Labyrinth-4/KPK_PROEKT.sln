@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KPK_PROEKT", "KPK_PROEKT.csproj", "{41980ECA-0A47-4575-85C5-2B2415716906}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LabyrithGameProject", "LabyrithGameProject.csproj", "{41980ECA-0A47-4575-85C5-2B2415716906}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameTests", "..\UnitTestProject1\GameTests.csproj", "{B8730B21-605D-48FB-9373-8EE08D57389F}"
 EndProject
