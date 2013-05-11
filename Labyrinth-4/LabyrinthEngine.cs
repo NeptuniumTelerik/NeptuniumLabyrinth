@@ -35,66 +35,26 @@ namespace Labyrinth
 
             switch(lowerInput)
             {
-                case "l":
-                    if (!moveLeft())
-                    {
-                        Console.WriteLine("Invalid move!");
-                    }
-
-                break;
-
-                case "r":
-                    if (!moveRight())
-                    {
-                        Console.WriteLine("Invalid move!");
-                    }
-
-                break;
-
-                case "u":
-                    if (!moveUp())
-                    {
-                        Console.WriteLine("Invalid move!");
-                    }
-
-                break;
-
-                case "d":
-                    if (!moveDown())
-                    {
-                        Console.WriteLine("Invalid move!");
-                    }
-
-                break;
-
-                case "top":
-                    scoreboard.ShowScoreboard();
-                break;
-
-                case "restart":
-                    Restart();
-                break;
-
-                case "exit":
-                    Console.WriteLine("Good bye!");
-                    System.Environment.Exit(0);
-                break;
-
-                default:
-                    Console.WriteLine("Invalid command!");
-                break;
+                case "l": moveLeft();break;
+                case "r": moveRight();break;
+                case "u":moveUp();break;
+                case "d":moveDown();break;
+                case "top":scoreboard.ShowScoreboard();break;
+                case "restart": Restart(); break;
+                case "exit":Console.WriteLine("Good bye!");System.Environment.Exit(0); break;
+                default: Console.WriteLine("Invalid command!"); break;
             }
 
             IsFinished();
         }
 
-        public static void ShowLabyrinth(LabyrinthMatrix labyrinth)
+        public  void ShowLabyrinth(LabyrinthMatrix labyrinth)
         {
             Console.WriteLine();
-            char[][] myMatrix = labyrinth.Matrix;
-            for (int i = 0; i < myMatrix.Length; i++)
+            char[,] myMatrix = labyrinth.Matrix;
+            for (int i = 0; i < myMatrix.GetLength(0); i++)
             {
-                for (int j = 0; j < myMatrix[i].Length; j++)
+                for (int j = 0; j < myMatrix.GetLength(1); j++)
                 {
                     if (i == labyrinth.MyPostionVertical && j == labyrinth.MyPostionHorizontal)
                     {
@@ -102,7 +62,7 @@ namespace Labyrinth
                     }
                     else
                     {
-                        Console.Write(myMatrix[j][i]);
+                        Console.Write(myMatrix[j, i]);
                     }
                 }
                 Console.WriteLine();
@@ -130,56 +90,59 @@ namespace Labyrinth
             moveCount = 0;
         }
 
-        private bool moveDown()
+        private void moveDown()
         {
-            if (matrix.MyPostionVertical != 6 &&
-                this.matrix.Matrix[matrix.MyPostionHorizontal][matrix.MyPostionVertical + 1] == '-')
+            int posHorizontal = matrix.MyPostionHorizontal;
+            int posVertical = matrix.MyPostionVertical;
+            if (posVertical != 6 && this.matrix.Matrix[posHorizontal, posVertical + 1] == '-')
             {
                 matrix.MyPostionVertical++;
                 moveCount++;
-                return true;
+                return ;
             }
-
-            return false;
+            Console.WriteLine("Invalid move!");
+            
         }
 
-        private bool moveUp()
+        private void moveUp()
         {
-            if (matrix.MyPostionVertical != 0 &&
-                this.matrix.Matrix[matrix.MyPostionHorizontal][matrix.MyPostionVertical - 1] == '-')
+            int posHorizontal = matrix.MyPostionHorizontal;
+            int posVertical = matrix.MyPostionVertical;
+            if (posVertical != 0 && this.matrix.Matrix[posHorizontal, posVertical - 1] == '-')
             {
                 matrix.MyPostionVertical--;
                 moveCount++;
-                return true;
+                return;
             }
+            Console.WriteLine("Invalid move!");
 
-            return false;
         }
 
-        private bool moveRight()
+        private void moveRight()
         {
-            if (matrix.MyPostionHorizontal != 6 &&
-                 this.matrix.Matrix[matrix.MyPostionHorizontal+ 1][matrix.MyPostionVertical] == '-')
+            int posHorizontal = matrix.MyPostionHorizontal;
+            int posVertical = matrix.MyPostionVertical;
+            if (posHorizontal != 6 && this.matrix.Matrix[posHorizontal + 1, posVertical] == '-')
             {
                 matrix.MyPostionHorizontal++;
                 moveCount++;
-                return true;
+                return;
             }
-
-            return false;
+            Console.WriteLine("Invalid move!");
         }
 
-        private bool moveLeft()
+        private void moveLeft()
         {
-            if (matrix.MyPostionHorizontal != 0 &&
-                this.matrix.Matrix[matrix.MyPostionHorizontal - 1][matrix.MyPostionVertical] == '-')
+            int posHorizontal = matrix.MyPostionHorizontal;
+            int posVertical = matrix.MyPostionVertical;
+            if (posHorizontal != 0 &&
+                this.matrix.Matrix[posHorizontal - 1, posVertical] == '-')
             {
                 matrix.MyPostionHorizontal--;
                 moveCount++;
-                return true;
+                return;
             }
-
-            return false;
+            Console.WriteLine("Invalid move!");
         }
     }
 }

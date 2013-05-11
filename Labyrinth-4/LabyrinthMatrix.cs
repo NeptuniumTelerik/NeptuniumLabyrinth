@@ -7,7 +7,7 @@ namespace Labyrinth
 {
     public class LabyrinthMatrix
     {
-        private char[][] matrix;
+        private char[,] matrix;
         private  int myPostionVertical;
         private int myPostionHorizontal;
         private Random random = new Random();
@@ -16,21 +16,16 @@ namespace Labyrinth
         {
             myPostionHorizontal = 3;
             myPostionVertical = 3;
-            matrix = new char[7][];
+            matrix = new char[7,7];
 
-            for (int i = 0; i <matrix.Length; i++)
+            for (int i = 0; i < matrix.GetLength(0); i++)
             {
-                matrix[i] = new char[7];
-            }
-
-            for (int i = 0; i < matrix.Length; i++)
-            {
-                for (int j = 0; j < matrix[i].Length; j++)
+                for (int j = 0; j < matrix.GetLength(1); j++)
                 {
-                    matrix[i][j] = GetRandomSymbol();
+                    matrix[i,j] = GetRandomSymbol();
                 }
             }
-            matrix[myPostionHorizontal][myPostionVertical] = '-';
+            matrix[myPostionHorizontal,myPostionVertical] = '-';
         }
 
         private char GetRandomSymbol() 
@@ -46,7 +41,7 @@ namespace Labyrinth
             }
         }
 
-        public char[][] Matrix 
+        public char[,] Matrix 
         {
             get 
             {

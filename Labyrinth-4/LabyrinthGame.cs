@@ -9,13 +9,13 @@ namespace Labyrinth
     {
         static void Main(string[] args)
         {
-            LabyrinthEngine processor = new LabyrinthEngine();
+            LabyrinthEngine engine = new LabyrinthEngine();
 
             while (true)
             {
-                LabyrinthEngine.ShowLabyrinth(processor.Matrix);
-                processor.ShowInputMessage();
-                processor.HandleInput();
+                engine.ShowLabyrinth(engine.Matrix);
+                engine.ShowInputMessage();
+                engine.HandleInput();
             }
         }
     }
