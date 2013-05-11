@@ -46,7 +46,7 @@
     <Compile Include="LabyrinthGame.cs" />
     <Compile Include="LabyrinthMatrix.cs" />
     <Compile Include="LabyrinthEngine.cs" />
-    <Compile Include="Top5Scoreboard.cs" />
+    <Compile Include="TopFiveScoreboard.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />

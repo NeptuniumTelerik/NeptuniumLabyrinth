@@ -15,8 +15,7 @@ namespace Labyrinth
             {
                 LabyrinthEngine.ShowLabyrinth(processor.Matrix);
                 processor.ShowInputMessage();
-                string input = Console.ReadLine();
-                processor.HandleInput(input);
+                processor.HandleInput();
             }
         }
     }

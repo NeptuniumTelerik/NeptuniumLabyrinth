@@ -8,7 +8,7 @@ namespace Labyrinth
     public class LabyrinthMatrix
     {
         private char[][] matrix;
-        private int myPostionVertical;
+        private  int myPostionVertical;
         private int myPostionHorizontal;
         private Random random = new Random();
 
@@ -30,7 +30,7 @@ namespace Labyrinth
                     matrix[i][j] = GetRandomSymbol();
                 }
             }
-            matrix[3][3] = '-';
+            matrix[myPostionHorizontal][myPostionVertical] = '-';
         }
 
         private char GetRandomSymbol() 

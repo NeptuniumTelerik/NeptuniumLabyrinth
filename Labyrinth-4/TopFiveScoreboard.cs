@@ -5,11 +5,11 @@ using System.Text;
 
 namespace Labyrinth
 {
-    public class Top5Scoreboard
+    public class TopFiveScoreboard
     {
         private List<Tuple<uint, String>> scoreboard;
 
-        public Top5Scoreboard()
+        public TopFiveScoreboard()
         {
             this.scoreboard = new List<Tuple<uint, string>>();
         }
@@ -21,31 +21,32 @@ namespace Labyrinth
                 Console.WriteLine("You are not good enough for the scoreboard :)");
                 return;
             }
-            else if (this.scoreboard.Count == 0 ||(this.scoreboard.Count < 5) && this.scoreboard.Last().Item1 < moveCount)
+            else if ( this.scoreboard.Count == 0 ||(this.scoreboard.Count < 5 && this.scoreboard.Last().Item1 < moveCount))
             {
-                string nickname = ShowScoreboardInMessage();
+                string nickname = ShowScoreboardInputMessage();
                 scoreboard.Add(new Tuple<uint, string>(moveCount, nickname));
                 this.ShowScoreboard();
                 return;
             }
 
-            for (int i = 0; i < scoreboard.Count(); ++i)
+            for (int i = 0; i < this.scoreboard.Count; ++i)
             {
-                if (moveCount <= scoreboard[i].Item1)
+                if (moveCount <= this.scoreboard[i].Item1)
                 {
-                    string nickname = ShowScoreboardInMessage();
-                    scoreboard.Insert(i, new Tuple<uint, string>(moveCount, nickname));
+                    string nickname = ShowScoreboardInputMessage();
+                    this.scoreboard.Insert(i, new Tuple<uint, string>(moveCount, nickname));
                     if (scoreboard.Count > 5)
                     {
                         scoreboard.Remove(scoreboard.Last());
                     }
+
                     this.ShowScoreboard();
                     break;
                 }
             }
         }
 
-        private string ShowScoreboardInMessage()
+        private string ShowScoreboardInputMessage()
         {
             Console.Write("Please enter your name for the top scoreboard: ");
             string nickname = Console.ReadLine();

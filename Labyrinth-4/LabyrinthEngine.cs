@@ -9,7 +9,7 @@ namespace Labyrinth
     {
         private LabyrinthMatrix matrix;
         private uint moveCount;
-        private Top5Scoreboard scoreboard;
+        private TopFiveScoreboard scoreboard;
 
         public LabyrinthMatrix Matrix
         {
@@ -19,7 +19,7 @@ namespace Labyrinth
 
         public LabyrinthEngine()
         {
-            scoreboard = new Top5Scoreboard();
+            scoreboard = new TopFiveScoreboard();
             Restart();
         }
 
@@ -28,8 +28,9 @@ namespace Labyrinth
             Console.Write("Enter your move (L=left, R-right, U=up, D=down): ");
         }
 
-        public void HandleInput(string input)
+        public void HandleInput()
         {
+            string input = Console.ReadLine();
             string lowerInput = input.ToLower();
 
             switch(lowerInput)
