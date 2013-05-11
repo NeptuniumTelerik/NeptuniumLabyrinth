@@ -85,7 +85,6 @@ namespace Labyrinth
         {
             Console.WriteLine();
             Console.WriteLine("Welcome to “Labirinth” game. Please try to escape. Use 'top' to view the top scoreboard, 'restart' to start a new game and 'exit' to quit the game.");
-
             this.matrix = new LabyrinthMatrix();
             moveCount = 0;
         }
@@ -135,8 +134,7 @@ namespace Labyrinth
         {
             int posHorizontal = matrix.MyPostionHorizontal;
             int posVertical = matrix.MyPostionVertical;
-            if (posHorizontal != 0 &&
-                this.matrix.Matrix[posHorizontal - 1, posVertical] == '-')
+            if (posHorizontal != 0 && this.matrix.Matrix[posHorizontal - 1, posVertical] == '-')
             {
                 matrix.MyPostionHorizontal--;
                 moveCount++;
