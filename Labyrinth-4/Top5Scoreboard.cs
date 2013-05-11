@@ -7,26 +7,23 @@ namespace Labyrinth
 {
     public class Top5Scoreboard
     {
-        //maraba
-        List<Tuple<uint, String>> scoreboard;
+        private List<Tuple<uint, String>> scoreboard;
 
         public Top5Scoreboard()
         {
-            scoreboard = new List<Tuple<uint, string>>();
+            this.scoreboard = new List<Tuple<uint, string>>();
         }
 
         public void HandleScoreboard(uint moveCount)
         {
-            if (scoreboard.Count() >= 5 && moveCount > scoreboard.Last().Item1)
+            if (this.scoreboard.Count >= 5 && moveCount > this.scoreboard.Last().Item1)
             {
                 Console.WriteLine("You are not good enough for the scoreboard :)");
                 return;
             }
-
-            if (scoreboard.Count == 0 ||
-                (scoreboard.Count < 5) && scoreboard.Last().Item1 < moveCount)
+            else if (this.scoreboard.Count == 0 ||(this.scoreboard.Count < 5) && this.scoreboard.Last().Item1 < moveCount)
             {
-                String nickname = ShowScoreboardInMessage();
+                string nickname = ShowScoreboardInMessage();
                 scoreboard.Add(new Tuple<uint, string>(moveCount, nickname));
                 this.ShowScoreboard();
                 return;
@@ -36,7 +33,7 @@ namespace Labyrinth
             {
                 if (moveCount <= scoreboard[i].Item1)
                 {
-                    String nickname = ShowScoreboardInMessage();
+                    string nickname = ShowScoreboardInMessage();
                     scoreboard.Insert(i, new Tuple<uint, string>(moveCount, nickname));
                     if (scoreboard.Count > 5)
                     {
@@ -48,10 +45,10 @@ namespace Labyrinth
             }
         }
 
-        private String ShowScoreboardInMessage()
+        private string ShowScoreboardInMessage()
         {
             Console.Write("Please enter your name for the top scoreboard: ");
-            String nickname = Console.ReadLine();
+            string nickname = Console.ReadLine();
             return nickname;
         }
 
@@ -65,12 +62,7 @@ namespace Labyrinth
 
             for (int i = 0; i < scoreboard.Count; ++i)
             {
-                Console.WriteLine(  (i+1).ToString() + 
-                                    ". " +
-                                    scoreboard[i].Item2 +
-                                    " --> " + 
-                                    scoreboard[i].Item1.ToString() +
-                                    " moves.");
+                Console.WriteLine((i+1) + ". " + scoreboard[i].Item2 + " --> " + scoreboard[i].Item1 + " moves.");
             }
         }
     }

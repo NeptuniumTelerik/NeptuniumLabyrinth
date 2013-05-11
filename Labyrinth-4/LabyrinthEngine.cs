@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Labyrinth
 {
-    public class LabyrinthProcesor
+    public class LabyrinthEngine
     {
         private LabyrinthMatrix matrix;
         private uint moveCount;
@@ -16,18 +16,21 @@ namespace Labyrinth
             get { return matrix; }
             set { matrix = value; }
         }
-        public LabyrinthProcesor()
+
+        public LabyrinthEngine()
         {
             scoreboard = new Top5Scoreboard();
             Restart();
         }
+
         public void ShowInputMessage()
         {
             Console.Write("Enter your move (L=left, R-right, U=up, D=down): ");
         }
-        public void HandleInput(String input)
+
+        public void HandleInput(string input)
         {
-            String lowerInput = input.ToLower();
+            string lowerInput = input.ToLower();
 
             switch(lowerInput)
             {
@@ -36,6 +39,7 @@ namespace Labyrinth
                     {
                         Console.WriteLine("Invalid move!");
                     }
+
                 break;
 
                 case "r":
@@ -43,6 +47,7 @@ namespace Labyrinth
                     {
                         Console.WriteLine("Invalid move!");
                     }
+
                 break;
 
                 case "u":
@@ -50,6 +55,7 @@ namespace Labyrinth
                     {
                         Console.WriteLine("Invalid move!");
                     }
+
                 break;
 
                 case "d":
@@ -57,6 +63,7 @@ namespace Labyrinth
                     {
                         Console.WriteLine("Invalid move!");
                     }
+
                 break;
 
                 case "top":
@@ -79,18 +86,40 @@ namespace Labyrinth
 
             IsFinished();
         }
+
+        public static void ShowLabyrinth(LabyrinthMatrix labyrinth)
+        {
+            Console.WriteLine();
+            char[][] myMatrix = labyrinth.Matrix;
+            for (int i = 0; i < myMatrix.Length; i++)
+            {
+                for (int j = 0; j < myMatrix[i].Length; j++)
+                {
+                    if (i == labyrinth.MyPostionVertical && j == labyrinth.MyPostionHorizontal)
+                    {
+                        Console.Write("*");
+                    }
+                    else
+                    {
+                        Console.Write(myMatrix[j][i]);
+                    }
+                }
+                Console.WriteLine();
+            }
+        }
+
         private void IsFinished()
         {
-            if (matrix.MyPostionHorizontal == 0 ||
-                matrix.MyPostionHorizontal == 6 ||
-                matrix.MyPostionVertical == 0 ||
-                matrix.MyPostionVertical == 6)
+            int posHorizontal = matrix.MyPostionHorizontal;
+            int posVertical = matrix.MyPostionVertical;
+            if (posHorizontal == 0 || posHorizontal == 6 ||posVertical == 0 || posVertical == 6)
             {
-                Console.WriteLine("Congratulations! You escaped in " + moveCount.ToString() + " moves.");
+                Console.WriteLine("Congratulations! You escaped in " + moveCount + " moves.");
                 scoreboard.HandleScoreboard(moveCount);
                 Restart();
             }
         }
+
         private void Restart()
         {
             Console.WriteLine();
@@ -99,11 +128,10 @@ namespace Labyrinth
             this.matrix = new LabyrinthMatrix();
             moveCount = 0;
         }
-        #region Move Methods
 
         private bool moveDown()
         {
-            if (!(matrix.MyPostionVertical == 6) &&
+            if (matrix.MyPostionVertical != 6 &&
                 this.matrix.Matrix[matrix.MyPostionHorizontal][matrix.MyPostionVertical + 1] == '-')
             {
                 matrix.MyPostionVertical++;
@@ -116,7 +144,7 @@ namespace Labyrinth
 
         private bool moveUp()
         {
-            if (!(matrix.MyPostionVertical == 0) &&
+            if (matrix.MyPostionVertical != 0 &&
                 this.matrix.Matrix[matrix.MyPostionHorizontal][matrix.MyPostionVertical - 1] == '-')
             {
                 matrix.MyPostionVertical--;
@@ -126,9 +154,10 @@ namespace Labyrinth
 
             return false;
         }
+
         private bool moveRight()
         {
-            if (!(matrix.MyPostionHorizontal == 6) &&
+            if (matrix.MyPostionHorizontal != 6 &&
                  this.matrix.Matrix[matrix.MyPostionHorizontal+ 1][matrix.MyPostionVertical] == '-')
             {
                 matrix.MyPostionHorizontal++;
@@ -138,9 +167,10 @@ namespace Labyrinth
 
             return false;
         }
+
         private bool moveLeft()
         {
-            if (!(matrix.MyPostionHorizontal == 0) &&
+            if (matrix.MyPostionHorizontal != 0 &&
                 this.matrix.Matrix[matrix.MyPostionHorizontal - 1][matrix.MyPostionVertical] == '-')
             {
                 matrix.MyPostionHorizontal--;
@@ -150,7 +180,5 @@ namespace Labyrinth
 
             return false;
         }
-
-        #endregion
     }
 }
