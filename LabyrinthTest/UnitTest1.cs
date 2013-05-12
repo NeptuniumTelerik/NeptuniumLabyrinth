@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace GameTests
+namespace LabyrinthGameProjectTest
 {
     [TestClass]
     public class UnitTest1

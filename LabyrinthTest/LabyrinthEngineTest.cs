@@ -3,7 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 
 namespace LabyrinthGameProjectTest
-{
+{    
     /// <summary>
     ///This is a test class for LabyrinthEngineTest and is intended
     ///to contain all LabyrinthEngineTest Unit Tests
@@ -12,7 +12,6 @@ namespace LabyrinthGameProjectTest
     public class LabyrinthEngineTest
     {
         private TestContext testContextInstance;
-
         /// <summary>
         ///Gets or sets the test context which provides
         ///information about and functionality for the current test run.
@@ -59,16 +58,6 @@ namespace LabyrinthGameProjectTest
         //
         #endregion
 
-        /// <summary>
-        ///A test for HandleInput
-        ///</summary>
-        [TestMethod()]
-        public void HandleInputTest()
-        {
-            LabyrinthEngine target = new LabyrinthEngine(); // TODO: Initialize to an appropriate value
-            target.HandleInput();
-            Assert.Inconclusive("A method that does not return a value cannot be verified.");
-        }
 
         /// <summary>
         ///A test for LabyrinthEngine Constructor
@@ -81,39 +70,63 @@ namespace LabyrinthGameProjectTest
         }
 
         /// <summary>
-        ///A test for ShowInputMessage
+        ///A test for DrawLabyrinth
         ///</summary>
         [TestMethod()]
-        public void ShowInputMessageTest()
+        public void DrawLabyrinthTest()
         {
             LabyrinthEngine target = new LabyrinthEngine(); // TODO: Initialize to an appropriate value
-            target.ShowInputMessage();
+            target.DrawLabyrinth();
             Assert.Inconclusive("A method that does not return a value cannot be verified.");
         }
 
         /// <summary>
-        ///A test for ShowLabyrinth
+        ///A test for GameMenuControl
         ///</summary>
         [TestMethod()]
-        public void ShowLabyrinthTest()
+        public void GameMenuControlTest()
         {
             LabyrinthEngine target = new LabyrinthEngine(); // TODO: Initialize to an appropriate value
-            LabyrinthMatrix labyrinth = null; // TODO: Initialize to an appropriate value
-            target.ShowLabyrinth(labyrinth);
+            target.GameMenuControl();
             Assert.Inconclusive("A method that does not return a value cannot be verified.");
         }
 
         /// <summary>
-        ///A test for Matrix
+        ///A test for MovePlayer
         ///</summary>
         [TestMethod()]
-        public void MatrixTest()
+        public void MovePlayerTest()
         {
             LabyrinthEngine target = new LabyrinthEngine(); // TODO: Initialize to an appropriate value
-            LabyrinthMatrix expected = null; // TODO: Initialize to an appropriate value
-            LabyrinthMatrix actual;
-            target.Matrix = expected;
-            actual = target.Matrix;
+            string value = string.Empty; // TODO: Initialize to an appropriate value
+            bool expected = false; // TODO: Initialize to an appropriate value
+            bool actual;
+            actual = target.MovePlayer(value);
+            Assert.AreEqual(expected, actual);
+            Assert.Inconclusive("Verify the correctness of this test method.");
+        }
+
+        /// <summary>
+        ///A test for PlayerControl
+        ///</summary>
+        [TestMethod()]
+        public void PlayerControlTest()
+        {
+            LabyrinthEngine target = new LabyrinthEngine(); // TODO: Initialize to an appropriate value
+            target.PlayerControl();
+            Assert.Inconclusive("A method that does not return a value cannot be verified.");
+        }
+
+        /// <summary>
+        ///A test for ProcessInput
+        ///</summary>
+        [TestMethod()]
+        public void ProcessInputTest()
+        {
+            LabyrinthEngine target = new LabyrinthEngine(); // TODO: Initialize to an appropriate value
+            string expected = string.Empty; // TODO: Initialize to an appropriate value
+            string actual;
+            actual = target.ProcessInput();
             Assert.AreEqual(expected, actual);
             Assert.Inconclusive("Verify the correctness of this test method.");
         }
