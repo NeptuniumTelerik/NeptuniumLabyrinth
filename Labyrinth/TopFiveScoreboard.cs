@@ -29,22 +29,28 @@ namespace Labyrinth
                 return;
             }
 
-            for (int i = 0; i < this.scoreboard.Count; ++i)
-            {
-                if (moveCount <= this.scoreboard[i].Item1)
-                {
-                    string nickname = ShowScoreboardInputMessage();
-                    this.scoreboard.Insert(i, new Tuple<uint, string>(moveCount, nickname));
-                    if (scoreboard.Count > 5)
-                    {
-                        scoreboard.Remove(scoreboard.Last());
-                    }
-
-                    this.ShowScoreboard();
-                    break;
-                }
-            }
+			SortTopPlayers(moveCount);
         }
+
+		private void SortTopPlayers(uint moveCount)
+		{
+			for (int i = 0; i < this.scoreboard.Count; ++i)
+			{
+				if (moveCount <= this.scoreboard[i].Item1)
+				{
+					string nickname = ShowScoreboardInputMessage();
+					this.scoreboard.Insert(i, new Tuple<uint, string>(moveCount, nickname));
+					if (scoreboard.Count > 5)
+					{
+						scoreboard.Remove(scoreboard.Last());
+					}
+
+					this.ShowScoreboard();
+					break;
+				}
+			}
+		}
+
 
         private string ShowScoreboardInputMessage()
         {
