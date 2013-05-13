@@ -42,10 +42,12 @@ namespace Labyrinth
 
             string input = ProcessInput();
 
+			int matrixSize = 7;
+
             switch (input)
             {
                 case "top": scoreboard.ShowScoreboard(); break;
-                case "start": Start(7,7); break;
+				case "start": Start(matrixSize, matrixSize); break;
                 case "exit": Console.WriteLine("Good bye!"); System.Environment.Exit(0); break;
                 default: Console.WriteLine("Invalid command!"); break;
             }
