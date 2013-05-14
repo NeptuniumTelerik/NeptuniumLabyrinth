@@ -47,5 +47,47 @@ namespace LabyrinthGameProjectTest
 			}
 			return labyrinthMatrix;
 		}
+
+		[TestMethod]
+		public void TestIsOutsideMatrix()
+		{
+			int matrixSize = 3;
+			LabyrinthMatrix labyrinthMatrix = new LabyrinthMatrix(matrixSize, matrixSize);
+
+			//testing inside of the matrix
+			for (int row = 1; row < labyrinthMatrix.Matrix.GetLength(0) - 1; row++)
+			{
+				for (int col = 1; col < labyrinthMatrix.Matrix.GetLength(1) - 1; col++)
+				{
+					Assert.AreEqual(false,
+									labyrinthMatrix.isOutsideMatrix(row, col),
+									String.Format("Row: {0}; Col: {1}", col, col));
+				}
+			}
+
+			//testing outside of the matrix - horizontaly boundary
+			int lastRow = labyrinthMatrix.Matrix.GetLength(0)-1;
+			for (int row = 0; row < labyrinthMatrix.Matrix.GetLength(0); row += lastRow)
+			{
+				for (int col = 0; col < labyrinthMatrix.Matrix.GetLength(1); col++)
+				{
+					Assert.AreEqual(true,
+									labyrinthMatrix.isOutsideMatrix(row, col),
+									String.Format("Row: {0}; Col: {1}", col, col));
+				}			
+			}
+
+			//testing outside of the matrix - verticaly boundary
+			int lastCol = labyrinthMatrix.Matrix.GetLength(1) - 1;
+			for (int col = 0; col < labyrinthMatrix.Matrix.GetLength(1); col += lastCol)
+			{
+				for (int row = 0; row < labyrinthMatrix.Matrix.GetLength(1); row++)
+				{
+					Assert.AreEqual(true,
+									labyrinthMatrix.isOutsideMatrix(row, col),
+									String.Format("Row: {0}; Col: {1}", col, col));
+				}
+			}
+		}
 	}
 }
