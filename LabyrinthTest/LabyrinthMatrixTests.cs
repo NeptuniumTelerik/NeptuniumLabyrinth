@@ -54,7 +54,7 @@ namespace LabyrinthGameProjectTest
 				}
 			}
 
-			// test for count for random elements
+			// test for count of random elements by two counter matrix
 			bool isRandom = true;
 			int propabilityOfCountOfBlocks = (int)(numberOfGeneratedMatrix * 0.45);
 			int playerCoordinate = matrixSize / 2;
