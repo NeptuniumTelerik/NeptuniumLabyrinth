@@ -50,6 +50,7 @@
     <Compile Include="LabyrinthMatrix.cs" />
     <Compile Include="LabyrinthEngine.cs" />
     <Compile Include="LabyrinthPlayer.cs" />
+    <Compile Include="LabyrinthRenderer.cs" />
     <Compile Include="TopFiveScoreboard.cs" />
   </ItemGroup>
   <ItemGroup>
