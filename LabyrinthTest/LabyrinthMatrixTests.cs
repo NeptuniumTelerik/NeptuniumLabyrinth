@@ -46,7 +46,7 @@ namespace LabyrinthGameProjectTest
 						{
 							passableBlocksCountMatrix[col, row]++;
 						}
-						else
+						else if (labyrinthMatrix.Matrix[col, row] == 'X')
 						{
 							unpassableBlocksCountMatrix[col, row]++;
 						}
