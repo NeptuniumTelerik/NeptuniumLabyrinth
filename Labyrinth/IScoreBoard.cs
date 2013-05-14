@@ -7,7 +7,7 @@ namespace Labyrinth
 {
     public interface IScoreBoard
     {
-        void HandleScoreboard(uint moveCount);
+        void HandleScoreboard(uint moveCount,string nickname);
         void ShowScoreboard();
     }
 }

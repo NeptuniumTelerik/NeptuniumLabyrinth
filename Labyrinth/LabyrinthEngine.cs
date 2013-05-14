@@ -117,13 +117,20 @@ namespace Labyrinth
             if (isOutsideLabyrinth)
             {
                 Console.WriteLine("Congratulations! You escaped in " + this.player.MoveCounter + " moves.");
-                scoreboard.HandleScoreboard(this.player.MoveCounter);
+                string nickname = ShowInputNameMassage();
+                scoreboard.HandleScoreboard(this.player.MoveCounter, nickname);
                 return true;
             }
             else
             {
                 return false;
             }
+        }
+        private string ShowInputNameMassage()
+        {
+            Console.Write("Please enter your name for the top scoreboard: ");
+            string nickname = Console.ReadLine();
+            return nickname;
         }
 
         public void DrawLabyrinth()
