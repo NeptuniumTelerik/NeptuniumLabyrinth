@@ -2,7 +2,7 @@
 
 namespace Labyrinth
 {
-    class LabyrinthPlayer:IPlayer
+  public  class LabyrinthPlayer:IPlayer
     {
         public readonly char playerSymbol = '*';
 

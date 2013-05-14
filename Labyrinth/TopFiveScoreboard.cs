@@ -13,6 +13,7 @@ namespace Labyrinth
         {
             this.scoreboard = new List<Tuple<uint, string>>();
         }
+        //TODO: remove input
 
         public void HandleScoreboard(uint moveCount)
         {
