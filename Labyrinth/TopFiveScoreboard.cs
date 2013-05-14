@@ -55,9 +55,6 @@ namespace Labyrinth
 			}
 		}
 
-
-      
-
         public void ShowScoreboard()
         {
             if (this.Scoreboard.Count == 0)
