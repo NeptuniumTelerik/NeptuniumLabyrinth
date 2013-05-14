@@ -1,6 +1,7 @@
 ﻿using Labyrinth;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.IO;
 
 namespace LabyrinthGameProjectTest
 {
@@ -22,13 +23,13 @@ namespace LabyrinthGameProjectTest
             //Checking for exceptions.
         }
 
-        static int[,] mockLabyrinth = {{0, 1, 1, 0, 1, 0, 1},
-                {0, 0, 0, 0, 0, 0, 0},
-                {0, 0, 1, 0, 1, 0, 0},
-                {0, 0, 0, 0, 0, 0, 0},
-                {0, 0, 1, 0, 1, 1, 0},
-                {0, 1, 1, 0, 0, 0, 0},
-                {0, 0, 0, 0, 0, 0, 0}};
+        static char[,] mockLabyrinth = {{'-', 'X', 'X', '-', 'X', '-', 'X'},
+                {'-', '-', '-', '-', '-', '-', '-'},
+                {'-', '-', 'X', '-', 'X', '-', '-'},
+                {'-', '-', '-', '-', '-', '-', '-'},
+                {'-', '-', 'X', '-', 'X', 'X', '-'},
+                {'-', 'X', 'X', '-', '-', '-', '-'},
+                {'-', '-', '-', '-', '-', '-', '-'}};
 
         [TestMethod]
         public void TestStartForCorrectOutput()
