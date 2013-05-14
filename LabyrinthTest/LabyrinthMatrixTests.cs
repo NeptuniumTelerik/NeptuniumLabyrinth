@@ -18,6 +18,77 @@ namespace LabyrinthGameProjectTest
 		}
 
 		[TestMethod]
+		public void TestGenerateLabyrinthMatrix()
+		{
+			int matrixSize = 4;
+			LabyrinthMatrix labyrinthMatrix = new LabyrinthMatrix(matrixSize, matrixSize);
+			int numberOfGeneratedMatrix = 1000; //min 1000; number adequate to test random generator
+			if (numberOfGeneratedMatrix < 1000)
+			{
+				throw new Exception("The variable numberOfGeneratedMatrix must be minimum 1000");
+			}
+
+			// create matrix to count blocks type in the matrix
+			int[,] passableBlocksCountMatrix = new int[matrixSize, matrixSize];
+			int[,] unpassableBlocksCountMatrix = new int[matrixSize, matrixSize];
+			passableBlocksCountMatrix = GenerateCounterMatrix(passableBlocksCountMatrix);
+			unpassableBlocksCountMatrix = passableBlocksCountMatrix.Clone() as int[,];
+
+			//generate N random matrix and infill the twoo counter matrices (passableBlocksCountMatrix and unpassableBlocksCountMatrix)
+			for (int i = 0; i < numberOfGeneratedMatrix; i++)
+			{
+				labyrinthMatrix.GenerateLabyrinthMatrix();
+				for (int col = 0; col < matrixSize; col++)
+				{
+					for (int row = 0; row < matrixSize; row++)
+					{
+						if (labyrinthMatrix.Matrix[col,row] == '-')
+						{
+							passableBlocksCountMatrix[col, row]++;
+						}
+						else
+						{
+							unpassableBlocksCountMatrix[col, row]++;
+						}
+					}					
+				}
+			}
+
+			// test for count for random elements
+			bool isRandom = true;
+			int propabilityOfCountOfBlocks = (int)(numberOfGeneratedMatrix * 0.45);
+			int playerCoordinate = matrixSize / 2;
+			for (int col = 0; col < matrixSize; col++)
+			{
+				for (int row = 0; row < matrixSize; row++)
+				{
+					if (col == playerCoordinate && row == playerCoordinate)
+					{
+						continue;
+					}
+					if (passableBlocksCountMatrix[col, row] < propabilityOfCountOfBlocks ||
+						unpassableBlocksCountMatrix[col, row] < propabilityOfCountOfBlocks)
+					{
+						isRandom = false;
+					}
+				}
+			}
+			Assert.IsTrue(isRandom);
+		}
+
+		private int[,] GenerateCounterMatrix(int[,] matrix)
+		{
+			for (int col = 0; col < matrix.GetLength(0) ; col++)
+			{
+				for (int row = 0; row < matrix.GetLength(1); row++)
+				{
+					matrix[row, col] = 0;
+				}
+			}
+			return matrix;
+		}
+
+		[TestMethod]
 		public void TestIsPassableWithUnpassableBlocks()
 		{
 			int matrixSize = 3;
@@ -25,10 +96,10 @@ namespace LabyrinthGameProjectTest
 			char blockBody = 'X';
 			labyrinthMatrix = GenerateLabyrinthMatrix(labyrinthMatrix, blockBody);
 
-			Assert.AreEqual(false, labyrinthMatrix.IsPassable(0, 1)); //go to up
-			Assert.AreEqual(false, labyrinthMatrix.IsPassable(1, 2)); //go to right
-			Assert.AreEqual(false, labyrinthMatrix.IsPassable(2, 1)); //go to down
-			Assert.AreEqual(false, labyrinthMatrix.IsPassable(1, 0)); //go to left
+			Assert.IsFalse(labyrinthMatrix.IsPassable(0, 1)); //go to up
+			Assert.IsFalse(labyrinthMatrix.IsPassable(1, 2)); //go to right
+			Assert.IsFalse(labyrinthMatrix.IsPassable(2, 1)); //go to down
+			Assert.IsFalse(labyrinthMatrix.IsPassable(1, 0)); //go to left
 		}
 
 		[TestMethod]
@@ -39,10 +110,10 @@ namespace LabyrinthGameProjectTest
 			char blockBody = '-';
 			labyrinthMatrix = GenerateLabyrinthMatrix(labyrinthMatrix, blockBody);
 
-			Assert.AreEqual(true, labyrinthMatrix.IsPassable(0, 1)); //go to up
-			Assert.AreEqual(true, labyrinthMatrix.IsPassable(1, 2)); //go to right
-			Assert.AreEqual(true, labyrinthMatrix.IsPassable(2, 1)); //go to down
-			Assert.AreEqual(true, labyrinthMatrix.IsPassable(1, 0)); //go to left
+			Assert.IsTrue(labyrinthMatrix.IsPassable(0, 1)); //go to up
+			Assert.IsTrue(labyrinthMatrix.IsPassable(1, 2)); //go to right
+			Assert.IsTrue(labyrinthMatrix.IsPassable(2, 1)); //go to down
+			Assert.IsTrue(labyrinthMatrix.IsPassable(1, 0)); //go to left
 		}
 
 		private LabyrinthMatrix GenerateLabyrinthMatrix(LabyrinthMatrix matrix, char blockBody)
@@ -69,9 +140,9 @@ namespace LabyrinthGameProjectTest
 			{
 				for (int col = 1; col < labyrinthMatrix.Matrix.GetLength(1) - 1; col++)
 				{
-					Assert.AreEqual(false,
-									labyrinthMatrix.isOutsideMatrix(row, col),
-									String.Format("Row: {0}; Col: {1}", col, col));
+					Assert.IsFalse(	labyrinthMatrix.isOutsideMatrix(row, col),
+									String.Format("Row: {0}; Col: {1}", col, col)
+									);
 				}
 			}
 
@@ -81,9 +152,9 @@ namespace LabyrinthGameProjectTest
 			{
 				for (int col = 0; col < labyrinthMatrix.Matrix.GetLength(1); col++)
 				{
-					Assert.AreEqual(true,
-									labyrinthMatrix.isOutsideMatrix(row, col),
-									String.Format("Row: {0}; Col: {1}", col, col));
+					Assert.IsTrue( labyrinthMatrix.isOutsideMatrix(row, col),
+									String.Format("Row: {0}; Col: {1}", col, col)
+									);
 				}			
 			}
 
@@ -93,9 +164,9 @@ namespace LabyrinthGameProjectTest
 			{
 				for (int row = 0; row < labyrinthMatrix.Matrix.GetLength(1); row++)
 				{
-					Assert.AreEqual(true,
-									labyrinthMatrix.isOutsideMatrix(row, col),
-									String.Format("Row: {0}; Col: {1}", col, col));
+					Assert.IsTrue( labyrinthMatrix.isOutsideMatrix(row, col),
+									String.Format("Row: {0}; Col: {1}", col, col)
+									);
 				}
 			}
 		}
