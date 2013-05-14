@@ -2,7 +2,7 @@
 
 namespace Labyrinth
 {
-    class LabyrinthPlayer
+    class LabyrinthPlayer:IPlayer
     {
         public readonly char playerSymbol = '*';
 
@@ -55,11 +55,10 @@ namespace Labyrinth
             this.moveCounter++;
         }
 
-        public bool MoveLeft()
+        public void MoveLeft()
         {
             this.ColPosition--;
             this.moveCounter++;
-            return true;
         }
     }
 }

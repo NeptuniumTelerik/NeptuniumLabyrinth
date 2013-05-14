@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace Labyrinth
 {
-    public class LabyrinthMatrix
+    public class LabyrinthMatrix:IMatrix
     {
         private readonly Random randomGenerator = new Random();
         private readonly char unPassableBlock = 'X';

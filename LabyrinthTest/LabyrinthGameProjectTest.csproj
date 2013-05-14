@@ -62,9 +62,9 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="LabyrinthEngineTest.cs" />
+    <Compile Include="LabyrinthEngineTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="LabyrinthPlayerTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Labyrinth\LabyrinthGameProject.csproj">

@@ -56,7 +56,7 @@ namespace Labyrinth
 
         public void PlayerControl()
         {
-            Console.Write("Enter your move (L=left, R-right, U=up, D=down): ");
+            Console.Write("Enter your move (L=left, R-right, U=up, D=down,restat=Restart the game): ");
             string input = ProcessInput();
 
             bool commandExecuted = MovePlayer(input);
@@ -99,6 +99,7 @@ namespace Labyrinth
                         return true;
                     }
                      break;
+                case "restart": LabyrinthGame.Main(); break;
             }
             return false;
         }

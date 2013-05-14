@@ -9,7 +9,7 @@ namespace LabyrinthGameProjectTest
     ///to contain all LabyrinthEngineTest Unit Tests
     ///</summary>
     [TestClass()]
-    public class LabyrinthEngineTest
+    public class LabyrinthEngineTests
     {
         private TestContext testContextInstance;
         /// <summary>

@@ -2,9 +2,9 @@
 
 namespace Labyrinth
 {
-    class LabyrinthGame
+   public class LabyrinthGame
     {
-        static void Main(string[] args)
+      public  static void Main()
         {
             LabyrinthEngine engine = new LabyrinthEngine();
 
