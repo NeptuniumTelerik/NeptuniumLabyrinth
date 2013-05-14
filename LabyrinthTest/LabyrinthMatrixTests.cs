@@ -8,31 +8,41 @@ namespace LabyrinthGameProjectTest
 	public class LabyrinthMatrixTests
 	{
 		[TestMethod]
+		public void TestLabyrinthMatrixConstructor()
+		{
+			int matrixSize = 3;
+			LabyrinthMatrix labyrinthMatrix = new LabyrinthMatrix(matrixSize, matrixSize);
+
+			Assert.AreEqual(matrixSize, labyrinthMatrix.Matrix.GetLength(0));
+			Assert.AreEqual(matrixSize, labyrinthMatrix.Matrix.GetLength(1));
+		}
+
+		[TestMethod]
 		public void TestIsPassableWithUnpassableBlocks()
 		{
 			int matrixSize = 3;
-			LabyrinthMatrix matrix = new LabyrinthMatrix(matrixSize, matrixSize);
+			LabyrinthMatrix labyrinthMatrix = new LabyrinthMatrix(matrixSize, matrixSize);
 			char blockBody = 'X';
-			matrix = GenerateLabyrinthMatrix(matrix, blockBody);
+			labyrinthMatrix = GenerateLabyrinthMatrix(labyrinthMatrix, blockBody);
 
-			Assert.AreEqual(false, matrix.IsPassable(0, 1)); //go to up
-			Assert.AreEqual(false, matrix.IsPassable(1, 2)); //go to right
-			Assert.AreEqual(false, matrix.IsPassable(2, 1)); //go to down
-			Assert.AreEqual(false, matrix.IsPassable(1, 0)); //go to left
+			Assert.AreEqual(false, labyrinthMatrix.IsPassable(0, 1)); //go to up
+			Assert.AreEqual(false, labyrinthMatrix.IsPassable(1, 2)); //go to right
+			Assert.AreEqual(false, labyrinthMatrix.IsPassable(2, 1)); //go to down
+			Assert.AreEqual(false, labyrinthMatrix.IsPassable(1, 0)); //go to left
 		}
 
 		[TestMethod]
 		public void TestIsPassableWithPassableBlocks()
 		{
 			int matrixSize = 3;
-			LabyrinthMatrix matrix = new LabyrinthMatrix(matrixSize, matrixSize);
+			LabyrinthMatrix labyrinthMatrix = new LabyrinthMatrix(matrixSize, matrixSize);
 			char blockBody = '-';
-			matrix = GenerateLabyrinthMatrix(matrix, blockBody);
+			labyrinthMatrix = GenerateLabyrinthMatrix(labyrinthMatrix, blockBody);
 
-			Assert.AreEqual(true, matrix.IsPassable(0, 1)); //go to up
-			Assert.AreEqual(true, matrix.IsPassable(1, 2)); //go to right
-			Assert.AreEqual(true, matrix.IsPassable(2, 1)); //go to down
-			Assert.AreEqual(true, matrix.IsPassable(1, 0)); //go to left
+			Assert.AreEqual(true, labyrinthMatrix.IsPassable(0, 1)); //go to up
+			Assert.AreEqual(true, labyrinthMatrix.IsPassable(1, 2)); //go to right
+			Assert.AreEqual(true, labyrinthMatrix.IsPassable(2, 1)); //go to down
+			Assert.AreEqual(true, labyrinthMatrix.IsPassable(1, 0)); //go to left
 		}
 
 		private LabyrinthMatrix GenerateLabyrinthMatrix(LabyrinthMatrix matrix, char blockBody)
