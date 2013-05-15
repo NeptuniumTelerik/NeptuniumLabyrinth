@@ -76,6 +76,35 @@ namespace LabyrinthGameProjectTest
             //Assert.Inconclusive("A method that does not return a value cannot be verified.");
         }
 
+        [TestMethod()]
+        public void GameMenuControlTopTest()
+        {
+            using (StringWriter sw = new StringWriter())
+            {
+                Console.SetOut(sw);
+
+                TopFiveScoreboard scores = new TopFiveScoreboard();
+                UserInterfaceSimulation userInterface = new UserInterfaceSimulation();
+                userInterface.SimulateInput = "top";
+                LabyrinthEngine testEngine = new LabyrinthEngine();
+                testEngine.GameMenuControl();
+
+                StringBuilder expectedStringBuilder = new StringBuilder();
+                expectedStringBuilder.Append("The scoreboard is empty.");
+                expectedStringBuilder.Append(Environment.NewLine);
+                expectedStringBuilder.Append("\nEnter your move (L=left, R=right, U=up, D=down):");
+                expectedStringBuilder.Append("Good Bye!");
+                expectedStringBuilder.Append(Environment.NewLine);
+
+                string expectedString = expectedStringBuilder.ToString();
+                string output = sw.ToString();
+                output = output.Substring(output.Length - 86);
+
+                Assert.AreEqual<string>(expectedString, output);
+            }
+
+        }
+
         //        /// <summary>
         //        ///A test for MovePlayer
         //        ///</summary>
