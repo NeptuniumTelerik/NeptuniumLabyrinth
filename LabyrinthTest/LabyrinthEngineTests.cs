@@ -49,7 +49,28 @@ namespace LabyrinthGameProjectTest
         ///</summary>
         [TestMethod()]
         public void GameMenuControlExitTest()
-        {            
+        {
+            using (StringWriter sw = new StringWriter())
+            {
+                Console.SetOut(sw);
+
+                //TopFiveScoreboard scores = new TopFiveScoreboard();
+                UserInterfaceSimulation userInterface = new UserInterfaceSimulation();
+                userInterface.SimulateInput = "exit";
+                LabyrinthEngine testEngine = new LabyrinthEngine();
+                testEngine.GameMenuControl();
+
+                StringBuilder expectedStringBuilder = new StringBuilder();
+                expectedStringBuilder.Append("Good Bye!");
+                expectedStringBuilder.Append(Environment.NewLine);
+
+                string expectedString = expectedStringBuilder.ToString();
+                string output = sw.ToString();
+                output = output.Substring(output.Length - 11);
+
+                Assert.AreEqual<string>(expectedString, output);
+            }
+
             //LabyrinthEngine target = new LabyrinthEngine(); 
             //target.GameMenuControl();
             //Assert.Inconclusive("A method that does not return a value cannot be verified.");
