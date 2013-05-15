@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.IO;
+using System.Text;
 
 namespace LabyrinthGameProjectTest
 {
@@ -31,11 +32,6 @@ namespace LabyrinthGameProjectTest
                 {'-', 'X', 'X', '-', '-', '-', '-'},
                 {'-', '-', '-', '-', '-', '-', '-'}};
 
-        [TestMethod]
-        public void TestStartForCorrectOutput()
-        {
-            
-        }
 
         //        /// <summary>
         //        ///A test for DrawLabyrinth
@@ -48,16 +44,16 @@ namespace LabyrinthGameProjectTest
         //            Assert.Inconclusive("A method that does not return a value cannot be verified.");
         //        }
 
-        //        /// <summary>
-        //        ///A test for GameMenuControl
-        //        ///</summary>
-        //        [TestMethod()]
-        //        public void GameMenuControlTest()
-        //        {
-        //            LabyrinthEngine target = new LabyrinthEngine(); // TODO: Initialize to an appropriate value
-        //            target.GameMenuControl();
-        //            Assert.Inconclusive("A method that does not return a value cannot be verified.");
-        //        }
+        /// <summary>
+        ///A test for GameMenuControl
+        ///</summary>
+        [TestMethod()]
+        public void GameMenuControlExitTest()
+        {            
+            //LabyrinthEngine target = new LabyrinthEngine(); 
+            //target.GameMenuControl();
+            //Assert.Inconclusive("A method that does not return a value cannot be verified.");
+        }
 
         //        /// <summary>
         //        ///A test for MovePlayer

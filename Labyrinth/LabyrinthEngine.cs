@@ -109,7 +109,7 @@ namespace Labyrinth
             return false;
         }
 
-        public string ProcessInput()
+        public virtual string ProcessInput()
         {
             string input = Console.ReadLine();
             string lowerInput = input.ToLower();
