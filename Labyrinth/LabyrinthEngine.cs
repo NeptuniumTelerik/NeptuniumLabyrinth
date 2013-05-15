@@ -8,6 +8,7 @@ namespace Labyrinth
         private TopFiveScoreboard scoreboard;
         private LabyrinthPlayer player;
         private LabyrinthMatrix labyrinth;
+        private LabyrinthRenderer renderer;
 
         public LabyrinthEngine()
         {
@@ -19,10 +20,12 @@ namespace Labyrinth
             this.player = new LabyrinthPlayer(maxRows/2, maxCols/2);
             this.labyrinth = new LabyrinthMatrix(maxRows, maxCols);
             this.labyrinth.GenerateLabyrinthMatrix();
+            this.renderer = new LabyrinthRenderer(this.player, this.labyrinth);
 
             while (true)
             {
-                DrawLabyrinth();
+                // Old - DrawLabyrinth()
+                this.renderer.ConsoleDrawLabyrinth();
 
                 if (IsFinished())
                 {
@@ -31,6 +34,8 @@ namespace Labyrinth
 
                 PlayerControl();
             }
+
+            Console.Clear();
         }
 
         public void GameMenuControl()
@@ -113,7 +118,7 @@ namespace Labyrinth
 
         private bool IsFinished()
         {
-            bool isOutsideLabyrinth = this.labyrinth.isOutsideMatrix(this.player.RowPosition,this.player.ColPosition);
+            bool isOutsideLabyrinth = this.labyrinth.IsOutsideMatrix(this.player.RowPosition,this.player.ColPosition);
             if (isOutsideLabyrinth)
             {
                 Console.WriteLine("Congratulations! You escaped in " + this.player.MoveCounter + " moves.");
@@ -133,29 +138,29 @@ namespace Labyrinth
             return nickname;
         }
 
-        public void DrawLabyrinth()
-        {
-            char[,] matrix = this.labyrinth.Matrix;
+        //public void DrawLabyrinth()
+        //{
+        //    char[,] matrix = this.labyrinth.Matrix;
 
-            Console.WriteLine();
+        //    Console.WriteLine();
 
-            for (int row = 0; row < matrix.GetLength(0); row++)
-            {
-                for (int col = 0; col < matrix.GetLength(1); col++)
-                {
-                    if (row == this.player.RowPosition && col == this.player.ColPosition)
-                    {
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        Console.Write(this.player.playerSymbol);
-                        Console.ForegroundColor = ConsoleColor.Gray;
-                    }
-                    else
-                    {
-                        Console.Write(matrix[row, col]);
-                    }
-                }
-                Console.WriteLine();
-            }
-        }
+        //    for (int row = 0; row < matrix.GetLength(0); row++)
+        //    {
+        //        for (int col = 0; col < matrix.GetLength(1); col++)
+        //        {
+        //            if (row == this.player.RowPosition && col == this.player.ColPosition)
+        //            {
+        //                Console.ForegroundColor = ConsoleColor.Red;
+        //                Console.Write(this.player.PlayerSymbol);
+        //                Console.ForegroundColor = ConsoleColor.Gray;
+        //            }
+        //            else
+        //            {
+        //                Console.Write(matrix[row, col]);
+        //            }
+        //        }
+        //        Console.WriteLine();
+        //    }
+        //}
     }
 }

@@ -64,6 +64,7 @@
   <ItemGroup>
     <Compile Include="LabyrinthEngineTests.cs" />
     <Compile Include="LabyrinthMatrixTests.cs" />
+    <Compile Include="LabyrinthRendererTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="LabyrinthPlayerTests.cs" />
     <Compile Include="LabyrinthScoreboardTests.cs" />

@@ -4,12 +4,11 @@ namespace Labyrinth
 {
   public  class LabyrinthPlayer:IPlayer
     {
-        public readonly char playerSymbol = '*';
-
         private int rowPosition;
         private int colPosition;
         private uint moveCounter;
-      
+        private char playerSymbol = '*';  
+
         public int RowPosition
         {
             get { return this.rowPosition; }
@@ -28,11 +27,18 @@ namespace Labyrinth
             set { this.moveCounter = value; }
         }
 
-        public LabyrinthPlayer(int startRow, int startCol)
+        public char PlayerSymbol
+        {
+            get { return this.playerSymbol; }
+            private set { this.playerSymbol = value; }
+        }
+
+        public LabyrinthPlayer(int startRow, int startCol, char symbol = '*')
         {
             this.RowPosition = startRow;
             this.ColPosition = startCol;
-            this.moveCounter = 0;
+            this.MoveCounter = 0;
+            this.PlayerSymbol = symbol;
         }
 
         //Player Movement Implementation
