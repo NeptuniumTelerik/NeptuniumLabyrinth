@@ -10,6 +10,6 @@ namespace Labyrinth
        char[,] Matrix{get;set;}
        void GenerateLabyrinthMatrix();
        bool IsPassable(int row, int col);
-       bool isOutsideMatrix(int row, int col);
+       bool IsOutsideMatrix(int row, int col);
     }
 }
