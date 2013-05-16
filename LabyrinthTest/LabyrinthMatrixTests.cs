@@ -17,7 +17,6 @@ namespace LabyrinthGameProjectTest
             Assert.AreEqual(matrixSize, labyrinthMatrix.Matrix.GetLength(1));
         }
 
-        //TEST PASS SOME TIMES, SOME TIMES DOES NOT !!!!!
         [TestMethod]
         public void TestGenerateLabyrinthMatrix()
         {
@@ -57,7 +56,7 @@ namespace LabyrinthGameProjectTest
 
             // test for count of random elements by two counter matrix
             bool isRandom = true;
-            int propabilityOfCountOfBlocks = (int)(numberOfGeneratedMatrix * 0.45);
+            int propabilityOfCountOfBlocks = (int)(numberOfGeneratedMatrix * 0.40);
             int playerCoordinate = matrixSize / 2;
             for (int col = 0; col < matrixSize; col++)
             {

@@ -62,7 +62,6 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="LabyrinthMatrixTests.cs" />
     <Compile Include="LabyrinthEngineTests.cs" />
     <Compile Include="LabyrinthMatrixTests.cs" />
     <Compile Include="LabyrinthRendererTest.cs" />
