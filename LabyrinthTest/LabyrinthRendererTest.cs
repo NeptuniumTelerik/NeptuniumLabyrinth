@@ -6,7 +6,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace LabyrinthGameProjectTest
 {
-   
+
     [TestClass]
     public class LabyrinthRendererTest
     {
@@ -27,11 +27,11 @@ namespace LabyrinthGameProjectTest
                 "{0}XXX-XXX{0}XXX-XXX{0}XXX-XXX{0}---*---{0}XXX-XXX{0}XXX-XXX{0}XXX-XXX{0}",
                 Environment.NewLine);
 
-           LabyrinthPlayer player = new LabyrinthPlayer(7/2,7/2);
-           LabyrinthMatrix lab = new LabyrinthMatrix(7, 7);
-           lab.Matrix = matrixToTest01;
+            LabyrinthPlayer player = new LabyrinthPlayer(7 / 2, 7 / 2);
+            LabyrinthMatrix lab = new LabyrinthMatrix(7, 7);
+            lab.Matrix = matrixToTest01;
 
-            LabyrinthRenderer renderer = new LabyrinthRenderer(player,lab);
+            LabyrinthRenderer renderer = new LabyrinthRenderer(player, lab);
 
             StringWriter writer = new StringWriter();
 
@@ -43,9 +43,13 @@ namespace LabyrinthGameProjectTest
 
                 string output = writer.ToString();
 
-                Assert.AreEqual(expected,output);
+                Assert.AreEqual(expected, output);
             }
+        }
 
+        [TestMethod]
+        public void TestLabyrintConsolePrintWithSecondMatrix()
+        {
             char[,] matrixToTest02 = { 
                {'X','-','X','X','X','X','X'},
                {'X','-','X','X','X','X','X'},
@@ -56,11 +60,15 @@ namespace LabyrinthGameProjectTest
                {'X','X','X','X','X','X','X'},
             };
 
-            player = new LabyrinthPlayer(0, 1);
+            LabyrinthPlayer player = new LabyrinthPlayer(0, 1);
+            LabyrinthMatrix lab = new LabyrinthMatrix(7, 7);
             lab.Matrix = matrixToTest02;
+            LabyrinthRenderer renderer = new LabyrinthRenderer(player, lab);
 
-            renderer = new LabyrinthRenderer(player, lab);
-            writer = new StringWriter();
+            StringWriter writer = new StringWriter();
+            string expected = String.Format(
+                "{0}X*XXXXX{0}X-XXXXX{0}X-XXXXX{0}X-----X{0}XXX-XXX{0}XXXXXXX{0}XXXXXXX{0}",
+                Environment.NewLine);
 
             using (writer)
             {
@@ -69,10 +77,6 @@ namespace LabyrinthGameProjectTest
                 renderer.ConsoleDrawLabyrinth();
 
                 string output = writer.ToString();
-
-                expected = String.Format(
-               "{0}X*XXXXX{0}X-XXXXX{0}X-XXXXX{0}X-----X{0}XXX-XXX{0}XXXXXXX{0}XXXXXXX{0}",
-               Environment.NewLine);
 
                 Assert.AreEqual(expected, output);
             }
