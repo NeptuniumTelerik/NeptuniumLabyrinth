@@ -22,7 +22,7 @@ namespace LabyrinthGameProjectTest
         {
             int matrixSize = 4;
             LabyrinthMatrix labyrinthMatrix = new LabyrinthMatrix(matrixSize, matrixSize);
-            int numberOfGeneratedMatrix = 1000; //min 1000; number adequate to test random generator
+            int numberOfGeneratedMatrix = 1000; 
             if (numberOfGeneratedMatrix < 1000)
             {
                 throw new Exception("The variable numberOfGeneratedMatrix must be minimum 1000");

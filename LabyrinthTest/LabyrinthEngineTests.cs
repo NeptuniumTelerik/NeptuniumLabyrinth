@@ -25,24 +25,13 @@ namespace LabyrinthGameProjectTest
         }
 
         static char[,] mockLabyrinth = {{'-', 'X', 'X', '-', 'X', '-', 'X'},
-                {'-', '-', '-', '-', '-', '-', '-'},
-                {'-', '-', 'X', '-', 'X', '-', '-'},
-                {'-', '-', '-', '-', '-', '-', '-'},
-                {'-', '-', 'X', '-', 'X', 'X', '-'},
-                {'-', 'X', 'X', '-', '-', '-', '-'},
-                {'-', '-', '-', '-', '-', '-', '-'}};
+                                        {'-', '-', '-', '-', '-', '-', '-'},
+                                        {'-', '-', 'X', '-', 'X', '-', '-'},
+                                        {'-', '-', '-', '-', '-', '-', '-'},
+                                        {'-', '-', 'X', '-', 'X', 'X', '-'},
+                                        {'-', 'X', 'X', '-', '-', '-', '-'},
+                                        {'-', '-', '-', '-', '-', '-', '-'}};
 
-
-        //        /// <summary>
-        //        ///A test for DrawLabyrinth
-        //        ///</summary>
-        //        [TestMethod()]
-        //        public void DrawLabyrinthTest()
-        //        {
-        //            LabyrinthEngine target = new LabyrinthEngine(); // TODO: Initialize to an appropriate value
-        //            target.DrawLabyrinth();
-        //            Assert.Inconclusive("A method that does not return a value cannot be verified.");
-        //        }
 
         /// <summary>
         ///A test for GameMenuControl
@@ -53,8 +42,6 @@ namespace LabyrinthGameProjectTest
             using (StringWriter sw = new StringWriter())
             {
                 Console.SetOut(sw);
-
-                //TopFiveScoreboard scores = new TopFiveScoreboard();
                 UserInterfaceSimulation userInterface = new UserInterfaceSimulation();
                 userInterface.SimulateInput = "exit";
                 LabyrinthEngine testEngine = new LabyrinthEngine();
@@ -71,12 +58,8 @@ namespace LabyrinthGameProjectTest
                 Assert.AreEqual<string>(expectedString, output);
             }
 
-            //LabyrinthEngine target = new LabyrinthEngine(); 
-            //target.GameMenuControl();
-            //Assert.Inconclusive("A method that does not return a value cannot be verified.");
         }
 
-        //[TestMethod()] - this tests takes forever
         public void GameMenuControlTopTest()
         {
             using (StringWriter sw = new StringWriter())
@@ -102,47 +85,7 @@ namespace LabyrinthGameProjectTest
 
                 Assert.AreEqual<string>(expectedString, output);
             }
-
         }
 
-        //        /// <summary>
-        //        ///A test for MovePlayer
-        //        ///</summary>
-        //        [TestMethod()]
-        //        public void MovePlayerTest()
-        //        {
-        //            LabyrinthEngine target = new LabyrinthEngine(); // TODO: Initialize to an appropriate value
-        //            string value = string.Empty; // TODO: Initialize to an appropriate value
-        //            bool expected = false; // TODO: Initialize to an appropriate value
-        //            bool actual;
-        //            actual = target.MovePlayer(value);
-        //            Assert.AreEqual(expected, actual);
-        //            Assert.Inconclusive("Verify the correctness of this test method.");
-        //        }
-
-        //        /// <summary>
-        //        ///A test for PlayerControl
-        //        ///</summary>
-        //        [TestMethod()]
-        //        public void PlayerControlTest()
-        //        {
-        //            LabyrinthEngine target = new LabyrinthEngine(); // TODO: Initialize to an appropriate value
-        //            target.PlayerControl();
-        //            Assert.Inconclusive("A method that does not return a value cannot be verified.");
-        //        }
-
-        //        /// <summary>
-        //        ///A test for ProcessInput
-        //        ///</summary>
-        //        [TestMethod()]
-        //        public void ProcessInputTest()
-        //        {
-        //            LabyrinthEngine target = new LabyrinthEngine(); // TODO: Initialize to an appropriate value
-        //            string expected = string.Empty; // TODO: Initialize to an appropriate value
-        //            string actual;
-        //            actual = target.ProcessInput();
-        //            Assert.AreEqual(expected, actual);
-        //            Assert.Inconclusive("Verify the correctness of this test method.");
-        //        }
     }
 }
